@@ -27,12 +27,7 @@ export const profileConfig: ProfileConfig = {
 			url: "https://github.com/amazing36",
 			showName: false,
 		},
-		{
-			name: "Email",
-			icon: "fa7-solid:envelope",
-			url: "mailto:xiaye@msn.com",
-			showName: false,
-		},
+
 		{
 			name: "RSS",
 			icon: "fa7-solid:rss",
