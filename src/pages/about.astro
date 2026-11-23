@@ -1,39 +1,25 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
+
+import { getEntry, render } from "astro:content";
+import Markdown from "@components/common/Markdown.astro";
+import I18nKey from "@/i18n/i18nKey";
+import { i18n } from "@/i18n/translation";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+
+const aboutPost = await getEntry("spec", "about");
+
+if (!aboutPost) {
+	throw new Error("About page content not found");
+}
+
+const { Content } = await render(aboutPost);
 ---
-
-<Layout
-	title="关于我"
-	description="Java 工程师的 AI 探索之路"
-	pubDate={new Date('2026-04-23')}
-	heroImage={AboutHeroImage}
->
-	<h2>关于我</h2>
-	<p>
-		我是<strong>菠菜</strong>，一名 Java 开发工程师，目前专注于后端开发与 AI 技术探索。
-		日常使用 Spring Boot、Kafka、MySQL 等技术栈构建系统，同时也在用 Python + FastAPI + LLM
-		做 AI 应用开发——量化交易、股票分析、RAG 知识库都是我的实践方向。
-	</p>
-
-	<h2>技术栈</h2>
-	<ul>
-		<li><strong>后端</strong>：Java (JDK 8/11)、Spring Boot、MyBatis、Kafka</li>
-		<li><strong>数据库</strong>：MySQL、Redis</li>
-		<li><strong>AI/Python</strong>：FastAPI、LangChain、RAG、LLM 应用</li>
-		<li><strong>前端</strong>：微信小程序、Vue（学习中）</li>
-		<li><strong>运维</strong>：Docker、阿里云 ECS、Nginx</li>
-	</ul>
-
-	<h2>这个博客写什么</h2>
-	<p>
-		技术笔记、AI 实践心得、项目复盘、以及偶尔的生活随笔。
-		笔记主要来自我的 Obsidian 知识库——把思考沉淀下来，既是记录也是分享。
-	</p>
-
-	<h2>联系我</h2>
-	<ul>
-		<li>GitHub: <a href="https://github.com/spinach209" target="_blank">spinach209</a></li>
-		<li>Email: spinach@vip.qq.com</li>
-	</ul>
-</Layout>
+<MainGridLayout title={i18n(I18nKey.about)} description={i18n(I18nKey.about)}>
+    <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-9 py-6 relative w-full ">
+            <Markdown class="mt-2">
+                <Content />
+            </Markdown>
+        </div>
+    </div>
+</MainGridLayout>
