@@ -55,9 +55,11 @@ const isPublic = src.startsWith("/");
 // 动态导入本地图片
 let img: ImageMetadata | null = null;
 if (isLocal) {
+	// eager: true 才能同步拿到 ImageMetadata；懒加载模式下 import.meta.glob 只返回 loader，files[key] 恒为 truthy 但 await 出来的对象不是图片元数据
 	const files = import.meta.glob<ImageMetadata>(
 		"../../**/*.{png,jpg,jpeg,webp,avif}",
 		{
+			eager: true,
 			import: "default",
 		},
 	);
@@ -66,7 +68,7 @@ if (isLocal) {
 		.replace(/\\/g, "/");
 	const file = files[normalizedPath];
 	if (file) {
-		img = await file();
+		img = file;
 	} else {
 		console.error(
 			`[ERROR] Image not found: ${normalizedPath.replace("../../", "src/")}`,
@@ -82,6 +84,7 @@ if (fallbackPath && !isLocal && !isFallbackPublic) {
 	const files = import.meta.glob<ImageMetadata>(
 		"../../**/*.{png,jpg,jpeg,webp,avif}",
 		{
+			eager: true,
 			import: "default",
 		},
 	);
@@ -90,7 +93,7 @@ if (fallbackPath && !isLocal && !isFallbackPublic) {
 		.replace(/\\/g, "/");
 	const file = files[normalizedFallbackPath];
 	if (file) {
-		fallbackImg = await file();
+		fallbackImg = file;
 	}
 }
 

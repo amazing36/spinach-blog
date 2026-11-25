@@ -26,22 +26,20 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 	// 关于页面
 	links.push(LinkPreset.About);
 
-	// 自定义导航栏链接
-	links.push({
-		name: "链接",
-		url: "/links/",
-		icon: "material-symbols:link",
-
-		// 子菜单
-		children: [
-			{
-				name: "GitHub",
-				url: "https://github.com/amazing36",
-				external: true,
-				icon: "fa7-brands:github",
-			},
-		],
-	});
+	// 「链接」下拉菜单暂时隐藏（/links/ 页面不存在，点击会 404；需要时恢复）
+	// links.push({
+	// 	name: "链接",
+	// 	url: "/links/",
+	// 	icon: "material-symbols:link",
+	// 	children: [
+	// 		{
+	// 			name: "GitHub",
+	// 			url: "https://github.com/amazing36",
+	// 			external: true,
+	// 			icon: "fa7-brands:github",
+	// 		},
+	// 	],
+	// });
 
 	// 仅返回链接，其它导航搜索相关配置在模块顶层常量中独立导出
 	return { links } as NavBarConfig;

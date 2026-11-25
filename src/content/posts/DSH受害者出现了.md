@@ -1,7 +1,9 @@
 ---
 title: DSH受害者出现了
 published: 2026-11-20
-tags: [AI, Agent, DSH, 安全, 踩坑]
+tags: [DSH, 踩坑, Agent]
+category: AI 工程
+image: ../../assets/images/music-cover.avif
 draft: true
 ---
 ## 起因

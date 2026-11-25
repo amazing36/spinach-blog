@@ -1,8 +1,9 @@
 ---
 title: 'AI 是怎么动手干活的？从 Function Call 到 MCP 全链路拆解'
 published: 2026-11-19
-tags: [AI, Agent, Function Call, MCP, 工具调用]
+tags: [Agent, Function Call, MCP]
 category: AI 工程
+image: ../../assets/images/music-cover.avif
 draft: false
 ---
 

@@ -128,8 +128,8 @@ export const siteConfig: SiteConfig = {
 	// 页面开关配置 - 控制特定页面的访问权限，设为false会返回404
 	// bangumi的数据为编译时获取的，所以不是实时数据，请配置bangumi.userId
 	pages: {
-		// 友链页面开关
-		friends: true,
+		// 友链页面开关（暂时隐藏：导航入口 + 页面均不展示）
+		friends: false,
 		// 赞助页面开关
 		sponsor: false,
 		// 留言板页面开关，需要配置评论系统
@@ -141,7 +141,8 @@ export const siteConfig: SiteConfig = {
 	},
 
 	// 分类导航栏开关，在首页和归档页顶部显示分类快捷导航
-	categoryBar: true,
+	// 文章不多的时候这一栏很占地方，还容易冒出「未分类」，先关掉
+	categoryBar: false,
 
 	// 文章列表布局配置
 	postListLayout: {

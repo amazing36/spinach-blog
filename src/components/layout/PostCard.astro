@@ -282,8 +282,13 @@ const descriptionText = description || remarkPluginFrontmatter.excerpt || "";
       top: 1rem !important;
       bottom: 1rem !important;
       right: 1rem !important;
-      width: var(--coverWidth) !important;
+      width: 14rem !important;
       border-radius: 0.75rem !important;
+    }
+
+    /* 封面定宽后，内容区宽度跟着算，避免内容跑到封面下面被盖住 */
+    :global(.list-mode) .has-cover .post-card-content {
+      width: calc(100% - 14rem - 2rem) !important;
     }
 
     :global(.list-mode) .post-card-title {
